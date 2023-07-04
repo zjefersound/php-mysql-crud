@@ -51,7 +51,7 @@ $tipos_comissao = array(
               <th scope="col">Unidade</th>
               <th scope="col">Tipo comissão</th>
               <th scope="col">Categoria</th>
-              <th scope="col">Foto do produto</th>
+              <th scope="col">Foto</th>
               <th scope="col" style="width: 5rem;"></th>
               <th scope="col" style="width: 8rem;"></th>
             </tr>
@@ -83,7 +83,7 @@ $tipos_comissao = array(
                   <?= $tipos_comissao[$produto["tipo_comissao"]] ?>
                 </td>
                 <td>
-                  <?= $produto["codigo_ctg"] ?>
+                  <?= $produto["descricao_ctg"] ?>
                 </td>
                 <td>
                   <img class="border rounded product-image"

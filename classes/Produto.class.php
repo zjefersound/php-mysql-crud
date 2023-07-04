@@ -47,7 +47,7 @@ class Produto
     public function queryFindAll()
     {
         try {
-            $cst = $this->con->conectar()->prepare("SELECT * FROM `produto` ORDER BY `codigo_prd` ASC;");
+            $cst = $this->con->conectar()->prepare("SELECT * FROM `produto` INNER JOIN categoria ON produto.codigo_ctg = categoria.codigo_ctg ORDER BY `codigo_prd` ASC;");
             $cst->execute();
             return $cst->fetchAll();
         } catch (PDOException $ex) {
