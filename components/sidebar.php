@@ -6,20 +6,14 @@
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
       <a href="#" class="nav-link active" aria-current="page">
-        <i class="feather-home"></i>
-        Home
+      <i class="feather-shopping-bag"></i>
+        Produtos
       </a>
     </li>
     <li>
       <a href="#" class="nav-link text-white">
-        <i class="feather-home"></i>
-        Products
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <i class="feather-home"></i>
-        Customers
+        <i class="feather-book"></i>
+        Categorias
       </a>
     </li>
   </ul>
