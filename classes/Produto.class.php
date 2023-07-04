@@ -55,6 +55,14 @@ class Produto
         }
     }
 
+    public function queryInsert($dados)
+    {
+    }
+    public function queryUpdate($codigo, $dados)
+    {
+    }
+
+
     public function queryDelete($codigo)
     {
         try {

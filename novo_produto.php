@@ -1,3 +1,31 @@
+<?php
+require_once './classes/Categoria.class.php';
+require_once './classes/Produto.class.php';
+$objCategoria = new Categoria();
+$objProduto = new Produto();
+
+$categorias = $objCategoria->queryFindAll();
+
+$isEdit = false;
+$produto = null;
+
+if (isset($_GET['editar'])) {
+  $isEdit = true;
+  $produto = $objProduto->queryFindById($_GET['editar']);
+}
+
+if (isset($_POST['create'])) {
+  if ($objProduto->queryInsert($_POST) == 'ok') {
+    header('Location: index.php');
+  }
+}
+if (isset($_POST['update'])) {
+  if ($objProduto->queryUpdate($_GET['editar'], $_POST) == 'ok') {
+    header('Location: index.php');
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -45,30 +73,48 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="descricao_ctg">Unidade</label>
-            <input type="text" class="form-control" id="descricao_ctg" name="unidade"
+            <label for="unidade">Unidade</label>
+            <input type="text" class="form-control" id="unidade" name="unidade"
               placeholder="Ex: un (unidade), L (litro)">
           </div>
           <div class="form-group">
-            <label for="descricao_ctg">Tipo da comissão</label>
-            <input type="text" class="form-control" id="descricao_ctg" name="comissao"
-              placeholder="Ex: s (sem comissão), f (comissão fixa) ou p (percentnual de comissão">
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Ativo</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="ativo"
-              placeholder="Ex: 1 (Automovel), 2 (Eletrodomesticos), 3 (Perifericos)">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+            <label for="tipo_comissao">Tipo da comissão</label>
+            <select class="form-control" id="tipo_comissao" name="tipo_comissao">
+              <option>Sem comissão</option>
+              <option>Comissão fixa</option>
+              <option>Percentnual de comissão</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlFile1">Adicionar foto</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            <label for="codigo_ctg">Categoria</label>
+            <select class="form-control" id="codigo_ctg" name="codigo_ctg"
+              placeholder="Ex: 1 (Automovel), 2 (Eletrodomesticos), 3 (Perifericos)">
+              <?php
+              foreach ($categorias as $categoria) {
+                ?>
+                <option value="<?= $categoria["codigo_ctg"] ?>"><?= $categoria["descricao_ctg"] ?></option>
+                <?php
+              }
+              ?>
+            </select>
           </div>
-          <input name="create" class="btn btn-primary mt-3" type="submit" value="Adicionar">
-          <input name="update" class="btn btn-primary mt-3" type="submit" value="Editar">
+          <div class="mb-3">
+            <label for="foto" class="form-label">Adicionar foto</label>
+            <input class="form-control" type="file" id="foto" name="foto">
+          </div>
+          <input type="hidden" name="codigo_prd"
+            value="<?= isset($produto["codigo_prd"]) ? $produto["codigo_prd"] : "" ?>">
+
+          <?php if (!$isEdit) {
+            ?>
+            <input name="create" class="btn btn-primary mt-3" type="submit" value="Adicionar">
+            <?php
+          } ?>
+          <?php if ($isEdit) {
+            ?>
+            <input name="update" class="btn btn-primary mt-3" type="submit" value="Editar">
+            <?php
+          } ?>
           <a href="index.php" class="btn btn-secondary mt-3">Voltar</a>
         </form>
       </div>

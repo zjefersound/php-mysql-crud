@@ -21,3 +21,5 @@ CREATE TABLE IF NOT EXISTS produto (
     foto longblob,
     FOREIGN KEY (codigo_ctg) REFERENCES categoria(codigo_ctg)
 ) ENGINE = InnoDB;
+
+-- POPULATE
