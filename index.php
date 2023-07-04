@@ -17,132 +17,136 @@
 
 <body>
   <main>
-    <?php include './components/sidebar.php'; ?>
+    <?php
+    include './components/sidebar.php';
+    sidebar("produtos");
+    ?>
+    <div class="overflow-auto w-100">
+      <div class="container pt-5">
+        <div class="d-flex justify-content-between mb-3 align-items-center">
+          <h2>Produtos</h2>
+          <a href="novo_produto.php" class="btn btn-primary">Adicionar produto</a>
+        </div>
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descrição do produto</th>
+              <th scope="col">Data de cadastro</th>
+              <th scope="col">Preço</th>
+              <th scope="col">Ativo</th>
+              <th scope="col">Unidade</th>
+              <th scope="col">Tipo comissão</th>
+              <th scope="col">Codigo da categoria</th>
+              <th scope="col">Foto do produto</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="align-middle">
+              <th scope="row">1</th>
+              <td>Teclado HyperX RGB</td>
+              <td>25/07/2023</td>
+              <td>R$750.00</td>
+              <td>1</td>
+              <td>un</td>
+              <td>s</td>
+              <td>3</td>
+              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
+                  height="150"></td>
+              <td><button type="button" class="btn btn-primary">Editar</button></td>
+              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
+            </tr>
+            <tr class="align-middle">
+              <th scope="row">2</th>
+              <td>Teclado HyperX RGB</td>
+              <td>25/07/2023</td>
+              <td>R$750.00</td>
+              <td>1</td>
+              <td>un</td>
+              <td>s</td>
+              <td>3</td>
+              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
+                  height="150"></td>
+              <td><button type="button" class="btn btn-primary">Editar</button></td>
+              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
+            </tr>
+            <tr class="align-middle">
+              <th scope="row">3</th>
+              <td>Teclado HyperX RGB</td>
+              <td>25/07/2023</td>
+              <td>R$750.00</td>
+              <td>1</td>
+              <td>un</td>
+              <td>s</td>
+              <td>3</td>
+              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
+                  height="150"></td>
+              <td><button type="button" class="btn btn-primary">Editar</button></td>
+              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
+            </tr>
+            <tr class="align-middle">
+              <th scope="row">4</th>
+              <td>Teclado HyperX RGB</td>
+              <td>25/07/2023</td>
+              <td>R$750.00</td>
+              <td>1</td>
+              <td>un</td>
+              <td>s</td>
+              <td>3</td>
+              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
+                  height="150"></td>
+              <td><button type="button" class="btn btn-primary">Editar</button></td>
+              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
+            </tr>
+            <tr class="align-middle">
+              <th scope="row">5</th>
+              <td>Teclado HyperX RGB</td>
+              <td>25/07/2023</td>
+              <td>R$750.00</td>
+              <td>1</td>
+              <td>un</td>
+              <td>s</td>
+              <td>3</td>
+              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
+                  height="150"></td>
+              <td><button type="button" class="btn btn-primary">Editar</button></td>
+              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
+            </tr>
+            <tr class="align-middle">
+              <th scope="row">6</th>
+              <td>Teclado HyperX RGB</td>
+              <td>25/07/2023</td>
+              <td>R$750.00</td>
+              <td>1</td>
+              <td>un</td>
+              <td>s</td>
+              <td>3</td>
+              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
+                  height="150"></td>
+              <td><button type="button" class="btn btn-primary">Editar</button></td>
+              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
+            </tr>
+            <tr class="align-middle">
+              <th scope="row">6</th>
+              <td>Teclado HyperX RGB</td>
+              <td>25/07/2023</td>
+              <td>R$750.00</td>
+              <td>1</td>
+              <td>un</td>
+              <td>s</td>
+              <td>3</td>
+              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
+                  height="150"></td>
+              <td><button type="button" class="btn btn-primary">Editar</button></td>
+              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
+            </tr>
 
-    <div class="container pt-5 overflow-auto">
-      <div class="d-flex justify-content-between mb-3 align-items-center">
-        <h2>Produtos</h2>
-        <a href="novo_produto.php" class="btn btn-primary">Adicionar produto</a>
+          </tbody>
+        </table>
+
       </div>
-      <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Descrição do produto</th>
-            <th scope="col">Data de cadastro</th>
-            <th scope="col">Preço</th>
-            <th scope="col">Ativo</th>
-            <th scope="col">Unidade</th>
-            <th scope="col">Tipo comissão</th>
-            <th scope="col">Codigo da categoria</th>
-            <th scope="col">Foto do produto</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="align-middle">
-            <th scope="row">1</th>
-            <td>Teclado HyperX RGB</td>
-            <td>25/07/2023</td>
-            <td>R$750.00</td>
-            <td>1</td>
-            <td>un</td>
-            <td>s</td>
-            <td>3</td>
-            <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                height="150"></td>
-            <td><button type="button" class="btn btn-primary">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-          </tr>
-          <tr class="align-middle">
-            <th scope="row">2</th>
-            <td>Teclado HyperX RGB</td>
-            <td>25/07/2023</td>
-            <td>R$750.00</td>
-            <td>1</td>
-            <td>un</td>
-            <td>s</td>
-            <td>3</td>
-            <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                height="150"></td>
-            <td><button type="button" class="btn btn-primary">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-          </tr>
-          <tr class="align-middle">
-            <th scope="row">3</th>
-            <td>Teclado HyperX RGB</td>
-            <td>25/07/2023</td>
-            <td>R$750.00</td>
-            <td>1</td>
-            <td>un</td>
-            <td>s</td>
-            <td>3</td>
-            <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                height="150"></td>
-            <td><button type="button" class="btn btn-primary">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-          </tr>
-          <tr class="align-middle">
-            <th scope="row">4</th>
-            <td>Teclado HyperX RGB</td>
-            <td>25/07/2023</td>
-            <td>R$750.00</td>
-            <td>1</td>
-            <td>un</td>
-            <td>s</td>
-            <td>3</td>
-            <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                height="150"></td>
-            <td><button type="button" class="btn btn-primary">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-          </tr>
-          <tr class="align-middle">
-            <th scope="row">5</th>
-            <td>Teclado HyperX RGB</td>
-            <td>25/07/2023</td>
-            <td>R$750.00</td>
-            <td>1</td>
-            <td>un</td>
-            <td>s</td>
-            <td>3</td>
-            <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                height="150"></td>
-            <td><button type="button" class="btn btn-primary">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-          </tr>
-          <tr class="align-middle">
-            <th scope="row">6</th>
-            <td>Teclado HyperX RGB</td>
-            <td>25/07/2023</td>
-            <td>R$750.00</td>
-            <td>1</td>
-            <td>un</td>
-            <td>s</td>
-            <td>3</td>
-            <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                height="150"></td>
-            <td><button type="button" class="btn btn-primary">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-          </tr>
-          <tr class="align-middle">
-            <th scope="row">6</th>
-            <td>Teclado HyperX RGB</td>
-            <td>25/07/2023</td>
-            <td>R$750.00</td>
-            <td>1</td>
-            <td>un</td>
-            <td>s</td>
-            <td>3</td>
-            <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                height="150"></td>
-            <td><button type="button" class="btn btn-primary">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-          </tr>
-
-        </tbody>
-      </table>
-
     </div>
   </main>
 

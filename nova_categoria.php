@@ -31,7 +31,7 @@ if (isset($_POST['update'])) {
   <meta name="description" content="" />
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
   <meta name="generator" content="Hugo 0.84.0" />
-  <title>Painel de controle</title>
+  <title>Nova Categoria</title>
 
   <!-- Bootstrap core CSS -->
   <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -41,34 +41,38 @@ if (isset($_POST['update'])) {
 
 <body>
   <main>
-    <?php include './components/sidebar.php'; ?>
-
-    <div class="container pt-5 overflow-auto">
-      <div class="d-flex justify-content-between mb-3 align-items-center">
-        <h2>Categorias</h2>
-      </div>
-
-      <form method="POST">
-        <div class="form-group">
-          <label for="descricao_ctg">Nome da categoria</label>
-          <input type="text" class="form-control" id="descricao_ctg" name="descricao_ctg"
-            placeholder="Ex: Perifericos, Automoveis"
-            value="<?= isset($categoria["descricao_ctg"]) ? $categoria["descricao_ctg"] : "" ?>">
+    <?php
+    include './components/sidebar.php';
+    sidebar("categorias");
+    ?>
+    <div class="overflow-auto w-100">
+      <div class="container pt-5">
+        <div class="d-flex justify-content-between mb-3 align-items-center">
+          <h2>Nova Categoria</h2>
         </div>
-        <input type="hidden" name="codigo_ctg"
-          value="<?= isset($categoria["codigo_ctg"]) ? $categoria["codigo_ctg"] : "" ?>">
-        <?php if (!$isEdit) {
-          ?>
-          <input name="create" class="btn btn-primary mt-3" type="submit" value="Adicionar">
-          <?php
-        } ?>
-        <?php if ($isEdit) {
-          ?>
-          <input name="update" class="btn btn-primary mt-3" type="submit" value="Editar">
-          <?php
-        } ?>
-        <a href="categorias.php" class="btn btn-secondary mt-3">Voltar</a>
-      </form>
+
+        <form method="POST">
+          <div class="form-group">
+            <label for="descricao_ctg">Nome da categoria</label>
+            <input type="text" class="form-control" id="descricao_ctg" name="descricao_ctg"
+              placeholder="Ex: Perifericos, Automoveis"
+              value="<?= isset($categoria["descricao_ctg"]) ? $categoria["descricao_ctg"] : "" ?>">
+          </div>
+          <input type="hidden" name="codigo_ctg"
+            value="<?= isset($categoria["codigo_ctg"]) ? $categoria["codigo_ctg"] : "" ?>">
+          <?php if (!$isEdit) {
+            ?>
+            <input name="create" class="btn btn-primary mt-3" type="submit" value="Adicionar">
+            <?php
+          } ?>
+          <?php if ($isEdit) {
+            ?>
+            <input name="update" class="btn btn-primary mt-3" type="submit" value="Editar">
+            <?php
+          } ?>
+          <a href="categorias.php" class="btn btn-secondary mt-3">Voltar</a>
+        </form>
+      </div>
     </div>
   </main>
 

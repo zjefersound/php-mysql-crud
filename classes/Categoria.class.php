@@ -98,10 +98,10 @@ class Categoria
     }
   }
 
-  public function queryDelete($dado)
+  public function queryDelete($codigo)
   {
     try {
-      $this->codigo_ctg = $dado;
+      $this->codigo_ctg = $codigo;
       $cst = $this->con->conectar()->prepare("DELETE FROM `categoria` WHERE `codigo_ctg` = :codigo_ctg;");
       $cst->bindParam(":codigo_ctg", $this->codigo_ctg, PDO::PARAM_INT);
       if ($cst->execute()) {
