@@ -31,15 +31,15 @@ $categorias = $objCategoria->queryFindAll();
       <div class="container pt-5">
         <div class="d-flex justify-content-between mb-3 align-items-center">
           <h2>Categorias</h2>
-          <a href="nova_categoria.php" class="btn btn-primary ">Criar categoria</a>
+          <a href="nova_categoria.php" class="btn btn-primary "><i class="feather-plus"></i>  Adicionar categoria</a>
         </div>
         <table class="table">
           <thead class="table-dark">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Descrição categoria</th>
-              <th></th>
-              <th></th>
+              <th scope="col" style="width: 5rem;"></th>
+              <th scope="col" style="width: 8rem;"></th>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +56,7 @@ $categorias = $objCategoria->queryFindAll();
                 <td><a href="nova_categoria.php?editar=<?= $categoria["codigo_ctg"] ?>" type="button"
                     class="btn btn-primary">Editar</a></td>
                 <td><a href="deletar_categoria.php?codigo=<?= $categoria["codigo_ctg"] ?>" type="button"
-                    class="btn btn-danger">Excluir</a></td>
+                    class="btn btn-danger"><i class="feather-trash-2"></i>  Excluir</a></td>
               </tr>
               <?php
             }

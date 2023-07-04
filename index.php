@@ -4,6 +4,12 @@ require_once './utils/format.php';
 $objProduto = new Produto();
 
 $produtos = $objProduto->queryFindAll();
+
+$tipos_comissao = array(
+  "s" => "Sem comissão",
+  "f" => "Comissão fixa",
+  "p" => "Percentnual de comissão"
+);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,7 +38,7 @@ $produtos = $objProduto->queryFindAll();
       <div class="container pt-5">
         <div class="d-flex justify-content-between mb-3 align-items-center">
           <h2>Produtos</h2>
-          <a href="novo_produto.php" class="btn btn-primary">Adicionar produto</a>
+          <a href="novo_produto.php" class="btn btn-primary"><i class="feather-plus"></i>  Adicionar produto</a>
         </div>
         <table class="table">
           <thead class="table-dark">
@@ -46,8 +52,8 @@ $produtos = $objProduto->queryFindAll();
               <th scope="col">Tipo comissão</th>
               <th scope="col">Categoria</th>
               <th scope="col">Foto do produto</th>
-              <th></th>
-              <th></th>
+              <th scope="col" style="width: 5rem;"></th>
+              <th scope="col" style="width: 8rem;"></th>
             </tr>
           </thead>
           <tbody>
@@ -62,28 +68,31 @@ $produtos = $objProduto->queryFindAll();
                   <?= $produto["descricao_prd"] ?>
                 </td>
                 <td>
-                  <?=formatarData($produto["data_cadastro"]) ?>
+                  <?= formatarData($produto["data_cadastro"]) ?>
                 </td>
                 <td>
                   <?= $produto["preco"] ?>
                 </td>
                 <td>
-                  <?= $produto["ativo"] ?>
+                  <?= $produto["ativo"] ? "Sim" : "Não" ?>
                 </td>
                 <td>
                   <?= $produto["unidade"] ?>
                 </td>
                 <td>
-                  <?= $produto["tipo_comissao"] ?>
+                  <?= $tipos_comissao[$produto["tipo_comissao"]] ?>
                 </td>
                 <td>
                   <?= $produto["codigo_ctg"] ?>
                 </td>
                 <td>
-                  <img class="border rounded product-image" src="data:image/jpeg;base64,<?= base64_encode($produto['foto']) ?>"  />
+                  <img class="border rounded product-image"
+                    src="data:image/jpeg;base64,<?= base64_encode($produto['foto']) ?>" />
                 </td>
-                <td><a href="novo_produto.php?editar=<?=$produto["codigo_prd"]?>" class="btn btn-primary">Editar</a></td>
-                <td><a href="deletar_produto.php?codigo=<?=$produto["codigo_prd"]?>" class="btn btn-danger">Excluir</a< /td>
+                <td><a href="novo_produto.php?editar=<?= $produto["codigo_prd"] ?>" class="btn btn-primary">Editar</a>
+                </td>
+                <td><a href="deletar_produto.php?codigo=<?= $produto["codigo_prd"] ?>" class="btn btn-danger"><i class="feather-trash-2"></i>   Excluir</a>
+                </td>
               </tr>
               <?php
             }

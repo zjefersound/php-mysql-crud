@@ -57,8 +57,6 @@ class Produto
 
     public function queryInsert($dados)
     {
-        // print_r($dados);
-        print_r($_FILES['foto']);
         try {
             $this->descricao_prd = $dados['descricao_prd'];
             $this->descricao_prd = $dados["descricao_prd"];

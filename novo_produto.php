@@ -8,6 +8,7 @@ $categorias = $objCategoria->queryFindAll();
 
 $isEdit = false;
 $produto = null;
+$errorMessage = "";
 
 if (isset($_GET['editar'])) {
   $isEdit = true;
@@ -18,12 +19,14 @@ if (isset($_POST['create'])) {
   if ($objProduto->queryInsert($_POST) == 'ok') {
     header('Location: index.php');
   } else {
-    echo "Error";
+    $errorMessage = "Falha ao criar produto!";
   }
 }
 if (isset($_POST['update'])) {
   if ($objProduto->queryUpdate($_GET['editar'], $_POST) == 'ok') {
     header('Location: index.php');
+  } else {
+    $errorMessage = "Falha ao atualizar produto!";
   }
 }
 
@@ -56,7 +59,15 @@ if (isset($_POST['update'])) {
         <div class="d-flex justify-content-between mb-3 align-items-center">
           <h2>Novo produto</h2>
         </div>
-
+        <?php
+        if ($errorMessage) {
+          ?>
+          <div class="alert alert-danger" role="alert">
+            <?= $errorMessage ?>
+          </div>
+          <?php
+        }
+        ?>
         <form method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="descricao_prd">Descrição do produto</label>

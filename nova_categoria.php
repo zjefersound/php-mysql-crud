@@ -4,6 +4,7 @@ $objCategoria = new Categoria();
 
 $isEdit = false;
 $categoria = false;
+$errorMessage = "";
 
 if (isset($_GET['editar'])) {
   $isEdit = true;
@@ -13,11 +14,16 @@ if (isset($_GET['editar'])) {
 if (isset($_POST['create'])) {
   if ($objCategoria->queryInsert($_POST) == 'ok') {
     header('Location: categorias.php');
+  } else {
+    $errorMessage = "Falha ao criar categoria!";
   }
+
 }
 if (isset($_POST['update'])) {
   if ($objCategoria->queryUpdate($_GET['editar'], $_POST) == 'ok') {
     header('Location: categorias.php');
+  } else {
+    $errorMessage = "Falha ao atualizar categoria!";
   }
 }
 
@@ -50,7 +56,15 @@ if (isset($_POST['update'])) {
         <div class="d-flex justify-content-between mb-3 align-items-center">
           <h2>Nova Categoria</h2>
         </div>
-
+        <?php
+        if ($errorMessage) {
+          ?>
+          <div class="alert alert-danger" role="alert">
+            <?= $errorMessage ?>
+          </div>
+          <?php
+        }
+        ?>
         <form method="POST">
           <div class="form-group">
             <label for="descricao_ctg">Nome da categoria</label>
