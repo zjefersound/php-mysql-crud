@@ -22,7 +22,7 @@
     <div class="container pt-5 overflow-auto">
       <div class="d-flex justify-content-between mb-3 align-items-center">
         <h2>Produtos</h2>
-        <a href="nova_categoria.php" class="btn btn-primary">Adicionar produto</a>
+        <a href="novo_produto.php" class="btn btn-primary">Adicionar produto</a>
       </div>
       <table class="table">
         <thead class="table-dark">
