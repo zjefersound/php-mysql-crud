@@ -118,15 +118,19 @@ if (isset($_POST['update'])) {
           </div>
           <div class="mb-3">
             <label for="foto" class="form-label">Adicionar foto</label>
-            <?php
-            if (isset($produto['foto'])) {
-              ?>
-              <img class="border rounded product-image-preview"
-                src="data:image/jpeg;base64,<?= base64_encode($produto['foto']) ?>" />
-              <?php
-            }
-            ?>
-            <input class="form-control" type="file" id="foto" name="foto">
+            <div>
+
+              <label for="foto">
+                <div class="container-input-file">
+                  <img id="fotoImg" class="border rounded product-image-preview" src="<?= isset($produto['foto'])
+                    ? "data:image/jpeg;base64," . base64_encode($produto['foto'])
+                    : './assets/images/input-file.png'
+                    ?>" alt="foto">
+                </div>
+              </label>
+            </div>
+
+            <input class="hidden-input" type="file" id="foto" name="foto" onchange="loadFile(event)">
           </div>
           <input type="hidden" name="codigo_prd"
             value="<?= isset($produto["codigo_prd"]) ? $produto["codigo_prd"] : "" ?>">
@@ -148,8 +152,13 @@ if (isset($_POST['update'])) {
   </main>
 
   <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
-
   <script src="sidebars.js"></script>
+  <script>
+    const loadFile = (event) => {
+      const image = document.getElementById('fotoImg');
+      image.src = URL.createObjectURL(event.target.files[0]);
+    };
+  </script>
 </body>
 
 </html>
