@@ -5,13 +5,13 @@
   <hr />
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="#" class="nav-link active" aria-current="page">
+      <a href="index.php" class="nav-link active" aria-current="page">
       <i class="feather-shopping-bag"></i>
         Produtos
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link text-white">
+      <a href="categorias.php" class="nav-link text-white">
         <i class="feather-book"></i>
         Categorias
       </a>
