@@ -1,3 +1,9 @@
+<?php
+require_once './classes/Categoria.class.php';
+$objCategoria = new Categoria();
+
+$categorias = $objCategoria->queryShowAll();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -34,24 +40,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="align-middle">
-                        <th scope="row">1</th>
-                        <td>Alimentos</td>
-                        <td><button type="button" class="btn btn-primary">Editar</button></td>
-                        <td><button type="button" class="btn btn-danger">Excluir</button></td>
-                    </tr>
-                    <tr class="align-middle">
-                        <th scope="row">2</th>
-                        <td>Automoveis</td>
-                        <td><button type="button" class="btn btn-primary">Editar</button></td>
-                        <td><button type="button" class="btn btn-danger">Excluir</button></td>
-                    </tr>
-                    <tr class="align-middle">
-                        <th scope="row">1</th>
-                        <td>Teclado HyperX RGB</td>
-                        <td><button type="button" class="btn btn-primary">Editar</button></td>
-                        <td><button type="button" class="btn btn-danger">Excluir</button></td>
-                    </tr>
+                    <?php
+                    foreach ($categorias as $categoria) {
+                        ?>
+                        <tr class="align-middle">
+                            <th scope="row"><?=$categoria["codigo_ctg"]?></th>
+                            <td><?=$categoria["descricao_ctg"]?></td>
+                            <td><a href="nova_categoria.php?editar=<?=$categoria["codigo_ctg"]?>" type="button" class="btn btn-primary">Editar</a></td>
+                            <td><a href="deletar_categoria.php" type="button" class="btn btn-danger">Excluir</a></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
                 </tbody>
             </table>
 

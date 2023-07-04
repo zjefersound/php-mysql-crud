@@ -39,7 +39,7 @@ class Categoria
     }
   }
 
-  public function querySelect()
+  public function queryShowAll()
   {
 
     try {
