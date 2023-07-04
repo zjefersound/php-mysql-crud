@@ -62,7 +62,7 @@ class Produto
             $this->descricao_prd = $dados["descricao_prd"];
             $this->preco = $dados["preco"];
             $this->ativo = $dados["ativo"];
-            $this->unidade = $dados["unidade"]; 
+            $this->unidade = $dados["unidade"];
             $this->tipo_comissao = $dados["tipo_comissao"];
             $this->codigo_ctg = $dados["codigo_ctg"];
             $this->foto = file_get_contents($_FILES["foto"]["tmp_name"]);
@@ -92,6 +92,43 @@ class Produto
     }
     public function queryUpdate($codigo, $dados)
     {
+        try {
+            $this->codigo_prd = $dados["codigo_prd"];
+            $this->descricao_prd = $dados["descricao_prd"];
+            $this->preco = $dados["preco"];
+            $this->ativo = $dados["ativo"];
+            $this->unidade = $dados["unidade"];
+            $this->tipo_comissao = $dados["tipo_comissao"];
+            $this->codigo_ctg = $dados["codigo_ctg"];
+            $isUpdatingFoto = $_FILES["foto"]["size"] > 0;
+
+            $this->foto = $isUpdatingFoto ? file_get_contents($_FILES["foto"]["tmp_name"]) : null;
+            $update_foto = $isUpdatingFoto ? ", `foto`=:foto" : "";
+
+            $cst = $this->con->conectar()->
+                prepare(
+                    "UPDATE `produto` SET `descricao_prd` = :descricao_prd, `preco` = :preco, `ativo` = :ativo,  `unidade`= :unidade, `tipo_comissao`= :tipo_comissao, `codigo_ctg` = :codigo_ctg ".$update_foto." WHERE `produto`.`codigo_prd` = :codigo_prd;"
+                );
+
+            $cst->bindParam(":codigo_prd", $this->codigo_prd, PDO::PARAM_INT);
+            $cst->bindParam(":descricao_prd", $this->descricao_prd, PDO::PARAM_STR);
+            $cst->bindParam(":preco", $this->preco, PDO::PARAM_STR);
+            $cst->bindParam(":ativo", $this->ativo, PDO::PARAM_INT);
+            $cst->bindParam(":unidade", $this->unidade, PDO::PARAM_STR);
+            $cst->bindParam(":tipo_comissao", $this->tipo_comissao, PDO::PARAM_STR);
+            $cst->bindParam(":codigo_ctg", $this->codigo_ctg, PDO::PARAM_INT);
+            if ($isUpdatingFoto) {
+                $cst->bindParam(":foto", $this->foto, PDO::PARAM_LOB);
+            }
+
+            if ($cst->execute()) {
+                return 'ok';
+            } else {
+                return 'erro';
+            }
+        } catch (PDOException $ex) {
+            return 'error ' . $ex->getMessage();
+        }
     }
 
 

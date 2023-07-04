@@ -118,8 +118,15 @@ if (isset($_POST['update'])) {
           </div>
           <div class="mb-3">
             <label for="foto" class="form-label">Adicionar foto</label>
-            <input class="form-control" type="file" id="foto" name="foto"
-              value="<?= isset($produto["foto"]) ? base64_encode($produto['foto']) : "" ?>">
+            <?php
+            if (isset($produto['foto'])) {
+              ?>
+              <img class="border rounded product-image-preview"
+                src="data:image/jpeg;base64,<?= base64_encode($produto['foto']) ?>" />
+              <?php
+            }
+            ?>
+            <input class="form-control" type="file" id="foto" name="foto">
           </div>
           <input type="hidden" name="codigo_prd"
             value="<?= isset($produto["codigo_prd"]) ? $produto["codigo_prd"] : "" ?>">
