@@ -79,14 +79,16 @@ if (isset($_POST['update'])) {
           <div class="form-group">
             <label for="unidade">Unidade</label>
             <input type="text" class="form-control" id="unidade" name="unidade"
-              placeholder="Ex: un (unidade), L (litro)" value="<?= isset($produto["unidade"]) ? $produto["unidade"] : "" ?>"> 
+              placeholder="Ex: un (unidade), L (litro)"
+              value="<?= isset($produto["unidade"]) ? $produto["unidade"] : "" ?>">
           </div>
           <div class="form-group">
             <label for="tipo_comissao">Tipo da comissão</label>
             <select class="form-control" id="tipo_comissao" name="tipo_comissao">
-              <option>Sem comissão</option>
-              <option>Comissão fixa</option>
-              <option>Percentnual de comissão</option>
+              <option value="s" <?= isset($produto['tipo_comissao']) && $produto['tipo_comissao'] == "s" ? 'selected' : '' ?>>
+                Sem comissão</option>
+              <option value="f" <?= isset($produto['tipo_comissao']) && $produto['tipo_comissao'] == "f" ? 'selected' : '' ?>>Comissão fixa</option>
+              <option value="p" <?= isset($produto['tipo_comissao']) && $produto['tipo_comissao'] == "p" ? 'selected' : '' ?>>Percentnual de comissão</option>
             </select>
           </div>
           <div class="form-group">
@@ -96,7 +98,8 @@ if (isset($_POST['update'])) {
               <?php
               foreach ($categorias as $categoria) {
                 ?>
-                <option value="<?= $categoria["codigo_ctg"] ?>"><?= $categoria["descricao_ctg"] ?></option>
+                <option value="<?= $categoria["codigo_ctg"] ?>" <?= isset($produto['codigo_ctg']) && $produto['codigo_ctg'] == $categoria["codigo_ctg"] ? 'selected' : '' ?>><?= $categoria["descricao_ctg"] ?>
+                </option>
                 <?php
               }
               ?>
@@ -104,7 +107,8 @@ if (isset($_POST['update'])) {
           </div>
           <div class="mb-3">
             <label for="foto" class="form-label">Adicionar foto</label>
-            <input class="form-control" type="file" id="foto" name="foto" value="<?= isset($produto["foto"]) ? base64_encode($produto['foto']) : "" ?>">
+            <input class="form-control" type="file" id="foto" name="foto"
+              value="<?= isset($produto["foto"]) ? base64_encode($produto['foto']) : "" ?>">
           </div>
           <input type="hidden" name="codigo_prd"
             value="<?= isset($produto["codigo_prd"]) ? $produto["codigo_prd"] : "" ?>">

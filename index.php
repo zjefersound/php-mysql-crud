@@ -1,5 +1,6 @@
 <?php
 require_once './classes/Produto.class.php';
+require_once './utils/format.php';
 $objProduto = new Produto();
 
 $produtos = $objProduto->queryFindAll();
@@ -61,7 +62,7 @@ $produtos = $objProduto->queryFindAll();
                   <?= $produto["descricao_prd"] ?>
                 </td>
                 <td>
-                  <?= $produto["data_cadastro"] ?>
+                  <?=formatarData($produto["data_cadastro"]) ?>
                 </td>
                 <td>
                   <?= $produto["preco"] ?>
