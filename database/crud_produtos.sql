@@ -23,3 +23,7 @@ CREATE TABLE IF NOT EXISTS produto (
 ) ENGINE = InnoDB;
 
 -- POPULATE
+INSERT INTO `categoria` (`codigo_ctg`, `descricao_ctg`) VALUES
+(1, 'Livros'),
+(2, 'Periféricos'),
+(3, 'Smartphones');
