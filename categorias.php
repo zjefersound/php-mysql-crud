@@ -2,7 +2,7 @@
 require_once './classes/Categoria.class.php';
 $objCategoria = new Categoria();
 
-$categorias = $objCategoria->queryShowAll();
+$categorias = $objCategoria->queryFindAll();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,7 +32,7 @@ $categorias = $objCategoria->queryShowAll();
             </div>
             <table class="table">
                 <thead class="table-dark">
-                    <tr class="text-center">
+                    <tr>
                         <th scope="col">#</th>
                         <th scope="col">Descrição categoria</th>
                         <th></th>
@@ -44,10 +44,15 @@ $categorias = $objCategoria->queryShowAll();
                     foreach ($categorias as $categoria) {
                         ?>
                         <tr class="align-middle">
-                            <th scope="row"><?=$categoria["codigo_ctg"]?></th>
-                            <td><?=$categoria["descricao_ctg"]?></td>
-                            <td><a href="nova_categoria.php?editar=<?=$categoria["codigo_ctg"]?>" type="button" class="btn btn-primary">Editar</a></td>
-                            <td><a href="deletar_categoria.php" type="button" class="btn btn-danger">Excluir</a></td>
+                            <th scope="row">
+                                <?= $categoria["codigo_ctg"] ?>
+                            </th>
+                            <td>
+                                <?= $categoria["descricao_ctg"] ?>
+                            </td>
+                            <td><a href="nova_categoria.php?editar=<?= $categoria["codigo_ctg"] ?>" type="button"
+                                    class="btn btn-primary">Editar</a></td>
+                            <td><a href="deletar_categoria.php?codigo=<?= $categoria["codigo_ctg"] ?>" type="button" class="btn btn-danger">Excluir</a></td>
                         </tr>
                         <?php
                     }

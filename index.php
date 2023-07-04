@@ -26,7 +26,7 @@
       </div>
       <table class="table">
         <thead class="table-dark">
-          <tr class="text-center">
+          <tr>
             <th scope="col">#</th>
             <th scope="col">Descrição do produto</th>
             <th scope="col">Data de cadastro</th>

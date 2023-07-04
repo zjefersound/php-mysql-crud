@@ -23,13 +23,13 @@ class Categoria
 
   //métodos
 
-  public function queryShow($codigo_ctg)
+  public function queryFindById($codigo_ctg)
   {
     try {
       $this->codigo_ctg = $codigo_ctg;
       $cst = $this->con->conectar()->
         prepare(
-          "SELECT * FROM `categoria` WHERE `codigo_ctg` = :codigo_ctg "
+          "SELECT * FROM `categoria` WHERE `codigo_ctg` = :codigo_ctg"
         );
       $cst->bindParam(":codigo_ctg", $this->codigo_ctg, PDO::PARAM_INT);
       $cst->execute();
@@ -39,11 +39,11 @@ class Categoria
     }
   }
 
-  public function queryShowAll()
+  public function queryFindAll()
   {
 
     try {
-      $cst = $this->con->conectar()->prepare("SELECT * FROM `categoria`;");
+      $cst = $this->con->conectar()->prepare("SELECT * FROM `categoria` ORDER BY `codigo_ctg` ASC;");
       $cst->execute();
       return $cst->fetchAll();
     } catch (PDOException $ex) {
