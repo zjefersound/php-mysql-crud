@@ -1,5 +1,5 @@
 <?php
-include_once "../database/Connection.class.php";
+require_once "./database/Connection.class.php";
 
 class Produto
 {
