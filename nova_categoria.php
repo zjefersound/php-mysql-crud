@@ -30,7 +30,8 @@
                     <input type="text" class="form-control" id="descricao_ctg" name="descricao_ctg" placeholder="Ex: Perifericos, Automoveis">
                 </div>
                 <input name="create" class="btn btn-primary mt-3" type="submit" value="Adicionar"> 
-                <input name="update" class="btn btn-primary mt-3" type="submit" value="Editar"> 
+                <input name="update" class="btn btn-primary mt-3" type="submit" value="Editar">
+                <a href="categorias.php" class="btn btn-secondary">Voltar</a>
             </form>
         </div>
     </main>
