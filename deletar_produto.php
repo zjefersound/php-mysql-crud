@@ -1,10 +1,10 @@
 <?php
-require_once './classes/Categoria.class.php';
-$objCategoria = new Categoria();
+require_once './classes/Produto.class.php';
+$objProduto = new Produto();
 
 if (isset($_GET['codigo'])) {
   try {
-    $objCategoria->queryDelete($_GET['codigo']);
+    $objProduto->queryDelete($_GET['codigo']);
   } catch (Exception $e) {
     echo $e;
   }

@@ -17,6 +17,8 @@ if (isset($_GET['editar'])) {
 if (isset($_POST['create'])) {
   if ($objProduto->queryInsert($_POST) == 'ok') {
     header('Location: index.php');
+  } else {
+    echo "Error";
   }
 }
 if (isset($_POST['update'])) {
@@ -55,19 +57,21 @@ if (isset($_POST['update'])) {
           <h2>Novo produto</h2>
         </div>
 
-        <form>
+        <form method="POST" enctype="multipart/form-data">
           <div class="form-group">
-            <label for="descricao_ctg">Descrição do produto</label>
-            <input type="text" class="form-control" id="descricao_ctg" name="descricao_ctg"
-              placeholder="Ex: Mouse, Gol G4 2 portas">
+            <label for="descricao_prd">Descrição do produto</label>
+            <input type="text" class="form-control" id="descricao_prd" name="descricao_prd"
+              placeholder="Ex: Mouse, Gol G4 2 portas"
+              value="<?= isset($produto["descricao_prd"]) ? $produto["descricao_prd"] : "" ?>" required>
           </div>
           <div class="form-group">
             <label for="preco">Preço</label>
-            <input type="text" class="form-control" id="preco" name="preco" placeholder="Ex: 750.00, 499.99">
+            <input type="text" class="form-control" id="preco" name="preco" placeholder="Ex: 750.00, 499.99"
+              value="<?= isset($produto["preco"]) ? $produto["preco"] : "" ?>" required>
           </div>
           <div class="form-group">
             <label for="ativo">Ativo</label>
-            <select class="form-control" id="ativo" name="ativo">
+            <select class="form-control" id="ativo" name="ativo" required>
               <option value="1">Sim</option>
               <option value="0">Não</option>
             </select>
@@ -75,7 +79,7 @@ if (isset($_POST['update'])) {
           <div class="form-group">
             <label for="unidade">Unidade</label>
             <input type="text" class="form-control" id="unidade" name="unidade"
-              placeholder="Ex: un (unidade), L (litro)">
+              placeholder="Ex: un (unidade), L (litro)" value="<?= isset($produto["unidade"]) ? $produto["unidade"] : "" ?>"> 
           </div>
           <div class="form-group">
             <label for="tipo_comissao">Tipo da comissão</label>
@@ -100,7 +104,7 @@ if (isset($_POST['update'])) {
           </div>
           <div class="mb-3">
             <label for="foto" class="form-label">Adicionar foto</label>
-            <input class="form-control" type="file" id="foto" name="foto">
+            <input class="form-control" type="file" id="foto" name="foto" value="<?= isset($produto["foto"]) ? base64_encode($produto['foto']) : "" ?>">
           </div>
           <input type="hidden" name="codigo_prd"
             value="<?= isset($produto["codigo_prd"]) ? $produto["codigo_prd"] : "" ?>">

@@ -1,3 +1,9 @@
+<?php
+require_once './classes/Produto.class.php';
+$objProduto = new Produto();
+
+$produtos = $objProduto->queryFindAll();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -37,112 +43,50 @@
               <th scope="col">Ativo</th>
               <th scope="col">Unidade</th>
               <th scope="col">Tipo comissão</th>
-              <th scope="col">Codigo da categoria</th>
+              <th scope="col">Categoria</th>
               <th scope="col">Foto do produto</th>
               <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr class="align-middle">
-              <th scope="row">1</th>
-              <td>Teclado HyperX RGB</td>
-              <td>25/07/2023</td>
-              <td>R$750.00</td>
-              <td>1</td>
-              <td>un</td>
-              <td>s</td>
-              <td>3</td>
-              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                  height="150"></td>
-              <td><button type="button" class="btn btn-primary">Editar</button></td>
-              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-            </tr>
-            <tr class="align-middle">
-              <th scope="row">2</th>
-              <td>Teclado HyperX RGB</td>
-              <td>25/07/2023</td>
-              <td>R$750.00</td>
-              <td>1</td>
-              <td>un</td>
-              <td>s</td>
-              <td>3</td>
-              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                  height="150"></td>
-              <td><button type="button" class="btn btn-primary">Editar</button></td>
-              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-            </tr>
-            <tr class="align-middle">
-              <th scope="row">3</th>
-              <td>Teclado HyperX RGB</td>
-              <td>25/07/2023</td>
-              <td>R$750.00</td>
-              <td>1</td>
-              <td>un</td>
-              <td>s</td>
-              <td>3</td>
-              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                  height="150"></td>
-              <td><button type="button" class="btn btn-primary">Editar</button></td>
-              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-            </tr>
-            <tr class="align-middle">
-              <th scope="row">4</th>
-              <td>Teclado HyperX RGB</td>
-              <td>25/07/2023</td>
-              <td>R$750.00</td>
-              <td>1</td>
-              <td>un</td>
-              <td>s</td>
-              <td>3</td>
-              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                  height="150"></td>
-              <td><button type="button" class="btn btn-primary">Editar</button></td>
-              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-            </tr>
-            <tr class="align-middle">
-              <th scope="row">5</th>
-              <td>Teclado HyperX RGB</td>
-              <td>25/07/2023</td>
-              <td>R$750.00</td>
-              <td>1</td>
-              <td>un</td>
-              <td>s</td>
-              <td>3</td>
-              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                  height="150"></td>
-              <td><button type="button" class="btn btn-primary">Editar</button></td>
-              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-            </tr>
-            <tr class="align-middle">
-              <th scope="row">6</th>
-              <td>Teclado HyperX RGB</td>
-              <td>25/07/2023</td>
-              <td>R$750.00</td>
-              <td>1</td>
-              <td>un</td>
-              <td>s</td>
-              <td>3</td>
-              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                  height="150"></td>
-              <td><button type="button" class="btn btn-primary">Editar</button></td>
-              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-            </tr>
-            <tr class="align-middle">
-              <th scope="row">6</th>
-              <td>Teclado HyperX RGB</td>
-              <td>25/07/2023</td>
-              <td>R$750.00</td>
-              <td>1</td>
-              <td>un</td>
-              <td>s</td>
-              <td>3</td>
-              <td><img src="imagens/teclado_hyperxRGB.jpg" alt="Teclado colorido da marca HyperX" width="150"
-                  height="150"></td>
-              <td><button type="button" class="btn btn-primary">Editar</button></td>
-              <td><button type="button" class="btn btn-danger">Excluir</button< /td>
-            </tr>
-
+            <?php
+            foreach ($produtos as $produto) {
+              ?>
+              <tr class="align-middle">
+                <th scope="row">
+                  <?= $produto["codigo_prd"] ?>
+                </th>
+                <td>
+                  <?= $produto["descricao_prd"] ?>
+                </td>
+                <td>
+                  <?= $produto["data_cadastro"] ?>
+                </td>
+                <td>
+                  <?= $produto["preco"] ?>
+                </td>
+                <td>
+                  <?= $produto["ativo"] ?>
+                </td>
+                <td>
+                  <?= $produto["unidade"] ?>
+                </td>
+                <td>
+                  <?= $produto["tipo_comissao"] ?>
+                </td>
+                <td>
+                  <?= $produto["codigo_ctg"] ?>
+                </td>
+                <td>
+                  <img class="border rounded product-image" src="data:image/jpeg;base64,<?= base64_encode($produto['foto']) ?>"  />
+                </td>
+                <td><a href="novo_produto.php?editar=<?=$produto["codigo_prd"]?>" class="btn btn-primary">Editar</a></td>
+                <td><a href="deletar_produto.php?codigo=<?=$produto["codigo_prd"]?>" class="btn btn-danger">Excluir</a< /td>
+              </tr>
+              <?php
+            }
+            ?>
           </tbody>
         </table>
 

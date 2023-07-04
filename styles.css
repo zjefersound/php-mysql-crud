@@ -86,3 +86,9 @@ main {
 
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
+
+.product-image {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+}

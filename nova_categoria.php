@@ -56,7 +56,7 @@ if (isset($_POST['update'])) {
             <label for="descricao_ctg">Nome da categoria</label>
             <input type="text" class="form-control" id="descricao_ctg" name="descricao_ctg"
               placeholder="Ex: Perifericos, Automoveis"
-              value="<?= isset($categoria["descricao_ctg"]) ? $categoria["descricao_ctg"] : "" ?>">
+              value="<?= isset($categoria["descricao_ctg"]) ? $categoria["descricao_ctg"] : "" ?>" required>
           </div>
           <input type="hidden" name="codigo_ctg"
             value="<?= isset($categoria["codigo_ctg"]) ? $categoria["codigo_ctg"] : "" ?>">

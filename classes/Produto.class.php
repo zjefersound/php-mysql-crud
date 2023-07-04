@@ -57,6 +57,40 @@ class Produto
 
     public function queryInsert($dados)
     {
+        // print_r($dados);
+        print_r($_FILES['foto']);
+        try {
+            $this->descricao_prd = $dados['descricao_prd'];
+            $this->descricao_prd = $dados["descricao_prd"];
+            $this->preco = $dados["preco"];
+            $this->ativo = $dados["ativo"];
+            $this->unidade = $dados["unidade"]; 
+            $this->tipo_comissao = $dados["tipo_comissao"];
+            $this->codigo_ctg = $dados["codigo_ctg"];
+            $this->foto = file_get_contents($_FILES["foto"]["tmp_name"]);
+
+            $cst = $this->con->conectar()->
+                prepare(
+                    "INSERT INTO `produto` (`descricao_prd`, `preco`, `ativo`, `unidade`, `tipo_comissao`, `codigo_ctg`, `foto`)
+                    VALUES (:descricao_prd, :preco, :ativo, :unidade, :tipo_comissao, :codigo_ctg, :foto);"
+                );
+
+            $cst->bindParam(":descricao_prd", $this->descricao_prd, PDO::PARAM_STR);
+            $cst->bindParam(":preco", $this->preco, PDO::PARAM_STR);
+            $cst->bindParam(":ativo", $this->ativo, PDO::PARAM_INT);
+            $cst->bindParam(":unidade", $this->unidade, PDO::PARAM_STR);
+            $cst->bindParam(":tipo_comissao", $this->tipo_comissao, PDO::PARAM_STR);
+            $cst->bindParam(":codigo_ctg", $this->codigo_ctg, PDO::PARAM_INT);
+            $cst->bindParam(":foto", $this->foto, PDO::PARAM_LOB);
+
+            if ($cst->execute()) {
+                return 'ok';
+            } else {
+                return 'erro';
+            }
+        } catch (PDOException $ex) {
+            return 'error ' . $ex->getMessage();
+        }
     }
     public function queryUpdate($codigo, $dados)
     {
